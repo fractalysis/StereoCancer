@@ -445,6 +445,7 @@ public class StereoCancerGUI : ShaderGUI
     MaterialProperty _SobelSearchDistance = null;
     MaterialProperty _SobelQuality = null;
     MaterialProperty _SobelOpacity = null;
+    MaterialProperty _SobelDry = null;
     MaterialProperty _SobelBlendMode = null;
 
     MaterialProperty _colorSkewRDistance = null;
@@ -1347,6 +1348,7 @@ public class StereoCancerGUI : ShaderGUI
                 materialEditor.ShaderProperty(_SobelQuality, new GUIContent("Sobel Quality", "Adjust the quality of the sobel filter. It's recommended that Projected Coordinate Space is used to further increase quality."));
                 materialEditor.ShaderProperty(_SobelBlendMode, new GUIContent("Sobel Blend Mode", "Adjust the blend mode of the sobel filter."));
                 materialEditor.ShaderProperty(_SobelOpacity, new GUIContent("Sobel Opacity", "Adjust how much the sobel filter is blended into the screen color."));
+                materialEditor.ShaderProperty(_SobelDry, new GUIContent("Sobel Dry", "How much of the dry (original) image to include in the effect."));
             }
 
             displayColorShift = EditorGUILayout.Foldout(displayColorShift, "Color Channel Shift", true, scFoldoutStyle);

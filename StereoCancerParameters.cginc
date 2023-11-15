@@ -348,6 +348,7 @@ float _CircularVignetteScaleWithDistance;
 float _SobelSearchDistance;
 float _SobelQuality;
 float _SobelOpacity;
+float _SobelDry;
 float _SobelBlendMode;
 
 float _colorSkewRDistance;

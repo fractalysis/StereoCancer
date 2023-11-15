@@ -391,6 +391,7 @@ Shader "xwidghet/StereoCancer v0.1"
 		_SobelSearchDistance("Sobel Search Distance", Float) = 0.2
 		[Enum(Low, 0, High, 1)] _SobelQuality("Sobel Quality", Float) = 1
 		_SobelOpacity("Sobel Opacity", Float) = 0
+		_SobelDry("Sobel Dry", Float) = 1
 		[Enum(None, 0, Multiply, 1, MulAdd, 2)] _SobelBlendMode("Sobel Blend Mode", Float) = 0
 
 		_colorSkewRDistance("Red Move Distance", Float) = 3
@@ -1605,6 +1606,7 @@ Shader "xwidghet/StereoCancer v0.1"
 				if (_SobelOpacity != 0)
 				{
 					float sobelMagnitude = sobelFilter(i.camRight, i.camUp, worldCoordinates, _SobelSearchDistance, _SobelQuality)*_SobelOpacity;
+					float3 sobelDry = bgcolor.rgb * _SobelDry;
 
 					// None, aka Overwrite
 					if (_SobelBlendMode == 0)
@@ -1615,6 +1617,8 @@ Shader "xwidghet/StereoCancer v0.1"
 					// MulAdd
 					else if (_SobelBlendMode == 2)
 						bgcolor.rgb += bgcolor.rgb*sobelMagnitude;
+
+					bgcolor.rgb += sobelDry;
 				}
 
 				// Check opacity and override since the user may be intentionally
